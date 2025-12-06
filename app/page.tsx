@@ -152,9 +152,9 @@ export default function Home() {
         case 'complete':
           if (parsed.taskId) {
             const taskIds = Array.isArray(parsed.taskId) ? parsed.taskId : [parsed.taskId];
-            const foundTasks = taskIds.map(id => tasks.find(t => t._id === id)).filter(Boolean);
+            const foundTasks = taskIds.map((id: string) => tasks.find(t => t._id === id)).filter(Boolean) as Task[];
             // Only complete tasks that aren't already completed
-            const tasksToComplete = foundTasks.filter(task => !task.completed);
+            const tasksToComplete = foundTasks.filter((task: Task) => !task.completed);
 
             if (tasksToComplete.length > 0) {
               for (const task of tasksToComplete) {
@@ -188,7 +188,7 @@ export default function Home() {
         case 'delete':
           if (parsed.taskId) {
             const taskIds = Array.isArray(parsed.taskId) ? parsed.taskId : [parsed.taskId];
-            const foundTasks = taskIds.map(id => tasks.find(t => t._id === id)).filter(Boolean);
+            const foundTasks = taskIds.map((id: string) => tasks.find(t => t._id === id)).filter(Boolean) as Task[];
 
             if (foundTasks.length > 0) {
               for (const task of foundTasks) {
